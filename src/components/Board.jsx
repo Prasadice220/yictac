@@ -3,12 +3,13 @@ import Square from './Square';
 
 const Board = () => {
   const [board, setBoard] = useState(Array(9).fill(null))
-  console.log(board)
+  const [isXnext,setXnext] = useState(false) 
+
   const handleSquare = (position)=>{
     setBoard((prev)=>{
       return prev.map((square,pos)=>{
       if(pos === position){
-        return 'X'
+        return isXnext ? 'X':'O'
       }
       else{
         return square;
@@ -16,6 +17,9 @@ const Board = () => {
        }
       )
     })
+    setXnext((prev)=> !prev
+      
+    )
   }
   const renderSquare = position => {
    return (
